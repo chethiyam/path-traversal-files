@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path Traversal Lab</title>
+    <script src="script.php"></script>
+</head>
+<body>
+<script>
+    // Optional JS for validation (doesn't stop exploitation since it's client-side)
+    document.querySelector('form').addEventListener('submit', function(event) {
+        let input = document.querySelector('#file').value;
+        if (input.includes('../')) {
+            alert('Warning: Path traversal detected!');
+        }
+    });
+</script>
+
+    <h1>Path Traversal Vulnerability</h1>
+    <form action="script.php" method="GET">
+        <label for="file">Enter a file name to read:</label>
+        <input type="text" id="file" name="file" placeholder="file">
+        <button type="submit">Read File</button>
+    </form>
+</body>
+</html>
